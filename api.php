@@ -114,15 +114,15 @@ class wechatCallbackapiTest
                     }
                     elseif($keyword=='音乐'){
                         //定义回复类型
-                        $msgType=='music';
+                        $msgType='music';
                         //定义音乐标题
-                        $title = '冰雪奇缘';
+                        $title = '当我要走的时候';
                         //定义音乐描述
-                        $desc = '《冰雪奇缘》原声大碟';
+                        $desc = '就让这时光别停留,就让这姑娘别回头...';
                         //定义音乐链接
-                        $url = 'http://www.mtbar.me/wechat/heartlife.mp3';
+                        $url = 'http://www.mtbar.me/wechat/leaving.mp3';
                         //定义高清音乐链接
-                        $hqurl = 'http://www.mtbar.me/wechat/heartlife.mp3';
+                        $hqurl = 'http://www.mtbar.me/wechat/leaving.mp3';
                         //格式化字符串
                         $resultStr = sprintf($musicTpl,$fromUsername,$toUsername,$time,$msgType,$title,$desc,$url,$hqurl);
 
