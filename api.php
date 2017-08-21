@@ -4,6 +4,7 @@
   */
 
 //define your token
+//定义TOKEN密钥
 define("TOKEN", "weixin");
 $wechatObj = new wechatCallbackapiTest();
 $wechatObj->valid();
@@ -28,7 +29,7 @@ class wechatCallbackapiTest
 
       	//extract post data
 		if (!empty($postStr)){
-                
+
               	$postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
                 $fromUsername = $postObj->FromUserName;
                 $toUsername = $postObj->ToUserName;
@@ -41,7 +42,7 @@ class wechatCallbackapiTest
 							<MsgType><![CDATA[%s]]></MsgType>
 							<Content><![CDATA[%s]]></Content>
 							<FuncFlag>0</FuncFlag>
-							</xml>";             
+							</xml>";
 				if(!empty( $keyword ))
                 {
               		$msgType = "text";
@@ -57,19 +58,19 @@ class wechatCallbackapiTest
         	exit;
         }
     }
-		
+
 	private function checkSignature()
 	{
         $signature = $_GET["signature"];
         $timestamp = $_GET["timestamp"];
-        $nonce = $_GET["nonce"];	
-        		
+        $nonce = $_GET["nonce"];
+
 		$token = TOKEN;
 		$tmpArr = array($token, $timestamp, $nonce);
 		sort($tmpArr);
 		$tmpStr = implode( $tmpArr );
 		$tmpStr = sha1( $tmpStr );
-		
+
 		if( $tmpStr == $signature ){
 			return true;
 		}else{
