@@ -77,25 +77,29 @@ class wechatCallbackapiTest
                         $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                         //把xml数据返回给手机端
                         echo $resultStr;
-                    }elseif($keyword=='?'||$keyword=='？'){
+                    }
+                    elseif($keyword=='?'||$keyword=='？'){
                         $msgType=='text';
                         $contentStr="【1】特种服务号码\n【2】通讯服务号码\n【3】银行服务号码\n您可以通过【】编号获取内容哦!";
-                        $resultStr = sprintf($textTpl,$FromUserName,$toUsername,$time,$msgType,$contentStr);
+                        $resultStr = sprintf($textTpl,$fromUsername,$toUsername,$time,$msgType,$contentStr);
                         echo $resultStr;
-                    }elseif($keyword=='1'){
+                    }
+                    elseif($keyword=='1'){
                         $msgType=='text';
                         $contentStr="常用特种服务号码:\n匪警:110\n火警:119";
-                        $resultStr = sprintf($textTpl,$FromUserName,$toUsername,$time,$msgType,$contentStr);
+                        $resultStr = sprintf($textTpl,$fromUsername,$toUsername,$time,$msgType,$contentStr);
                         echo $resultStr;
-                    }elseif($keyword=='2'){
+                    }
+                    elseif($keyword=='2'){
                         $msgType=='text';
                         $contentStr="常用通讯服务号码:\n中国移动:10086\n中国联通:10010\n中国电信:10000";
-                        $resultStr = sprintf($textTpl,$FromUserName,$toUsername,$time,$msgType,$contentStr);
+                        $resultStr = sprintf($textTpl,$fromUsername,$toUsername,$time,$msgType,$contentStr);
                         echo $resultStr;
-                    }elseif($keyword=='3'){
+                    }
+                    elseif($keyword=='3'){
                         $msgType=='text';
                         $contentStr="常用银行服务号码:\n中国工商银行:95588\n中国建设银行:95533";
-                        $resultStr = sprintf($textTpl,$FromUserName,$toUsername,$time,$msgType,$contentStr);
+                        $resultStr = sprintf($textTpl,$fromUsername,$toUsername,$time,$msgType,$contentStr);
                         echo $resultStr;
                     }
                 }else{
