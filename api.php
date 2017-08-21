@@ -116,13 +116,13 @@ class wechatCallbackapiTest
                         //定义回复类型
                         $msgType='music';
                         //定义音乐标题
-                        $title = '当我要走的时候';
+                        $title = '小猫';
                         //定义音乐描述
-                        $desc = '就让这时光别停留,就让这姑娘别回头...';
+                        $desc = '你会经常上翘的嘴角\n出现在我每一个美好...';
                         //定义音乐链接
-                        $url = 'http://www.mtbar.me/wechat/leaving.mp3';
+                        $url = 'http://music.163.com/#/m/song?id=33166529&userid=324269021';
                         //定义高清音乐链接
-                        $hqurl = 'http://www.mtbar.me/wechat/leaving.mp3';
+                        $hqurl = 'http://music.163.com/#/m/song?id=33166529&userid=324269021';
                         //格式化字符串
                         $resultStr = sprintf($musicTpl,$fromUsername,$toUsername,$time,$msgType,$title,$desc,$url,$hqurl);
 
