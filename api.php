@@ -47,11 +47,8 @@ class wechatCallbackapiTest
                 $toUsername = $postObj->ToUserName;
                 //接收用户发送的关键词
                 $keyword = trim($postObj->Content);
-
-
                 //接收用户消息类型
                 $msgType = $postObj->MsgType;
-
                 //时间戳
                 $time = time();
                 //文本发送模版
@@ -63,6 +60,19 @@ class wechatCallbackapiTest
 							<Content><![CDATA[%s]]></Content>
 							<FuncFlag>0</FuncFlag>
 							</xml>";
+                //音乐发送模版
+                $musicTpl = "<xml>
+                            <ToUserName><![CDATA[%s]]></ToUserName>
+                            <FromUserName><![CDATA[%s]]></FromUserName>
+                            <CreateTime>%s</CreateTime>
+                            <MsgType><![CDATA[%s]]></MsgType>
+                            <Music>
+                            <Title><![CDATA[%s]]></Title>
+                            <Description><![CDATA[%s]]></Description>
+                            <MusicUrl><![CDATA[%s]]></MusicUrl>
+                            <HQMusicUrl><![CDATA[%s]]></HQMusicUrl>
+                            </Music>
+                            </xml>";
             //文本消息接口
             if($msgType=='text'){
                 //判断发送关键词是否为空
@@ -100,6 +110,23 @@ class wechatCallbackapiTest
                         $msgType=='text';
                         $contentStr="常用银行服务号码:\n中国工商银行:95588\n中国建设银行:95533";
                         $resultStr = sprintf($textTpl,$fromUsername,$toUsername,$time,$msgType,$contentStr);
+                        echo $resultStr;
+                    }
+                    elseif($keyword=='音乐'){
+                        //定义回复类型
+                        $msgType=='music';
+                        //定义音乐标题
+                        $title = '冰雪奇缘';
+                        //定义音乐描述
+                        $desc = '《冰雪奇缘》原声大碟';
+                        //定义音乐链接
+                        $url = 'http://www.mtbar.me/wechat/heartlife.mp3';
+                        //定义高清音乐链接
+                        $hqurl = 'http://www.mtbar.me/wechat/heartlife.mp3';
+                        //格式化字符串
+                        $resultStr = sprintf($musicTpl,$fromUsername,$toUsername,$time,$msgType,$title,$desc,$url,$hqurl);
+
+                        //返回XML数据
                         echo $resultStr;
                     }
                 }else{
