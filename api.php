@@ -78,40 +78,24 @@ class wechatCallbackapiTest
                         //把xml数据返回给手机端
                         echo $resultStr;
                     }elseif($keyword=='?'||$keyword=='？'){
-                        //定义回复类型
                         $msgType=='text';
-                        //回复内容
                         $contentStr="【1】特种服务号码\n【2】通讯服务号码\n【3】银行服务号码\n您可以通过【】编号获取内容哦!";
-                        //格式化字符串
                         $resultStr = sprintf($textTpl,$FromUserName,$toUsername,$time,$msgType,$contentStr);
-                        //返回数据到微信客户端
                         echo $resultStr;
                     }elseif($keyword=='1'){
-                        //定义回复类型
                         $msgType=='text';
-                        //回复内容
                         $contentStr="常用特种服务号码:\n匪警:110\n火警:119";
-                        //格式化字符串
                         $resultStr = sprintf($textTpl,$FromUserName,$toUsername,$time,$msgType,$contentStr);
-                        //返回数据到微信客户端
                         echo $resultStr;
                     }elseif($keyword=='2'){
-                        //定义回复类型
                         $msgType=='text';
-                        //回复内容
                         $contentStr="常用通讯服务号码:\n中国移动:10086\n中国联通:10010\n中国电信:10000";
-                        //格式化字符串
                         $resultStr = sprintf($textTpl,$FromUserName,$toUsername,$time,$msgType,$contentStr);
-                        //返回数据到微信客户端
                         echo $resultStr;
                     }elseif($keyword=='3'){
-                        //定义回复类型
                         $msgType=='text';
-                        //回复内容
                         $contentStr="常用银行服务号码:\n中国工商银行:95588\n中国建设银行:95533";
-                        //格式化字符串
                         $resultStr = sprintf($textTpl,$FromUserName,$toUsername,$time,$msgType,$contentStr);
-                        //返回数据到微信客户端
                         echo $resultStr;
                     }
                 }else{
