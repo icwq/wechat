@@ -82,8 +82,6 @@ class wechatCallbackapiTest
             }
             //图片消息接口
             elseif($msgType=='image'){
-                //判断发送关键词是否为空
-
                     //回复类型，如果为text，代表文本类型
                     $msgType = "text";
                     //回复内容
@@ -92,7 +90,50 @@ class wechatCallbackapiTest
                     $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                     //把xml数据返回给手机端
                     echo $resultStr;
-
+            }
+            //语音消息接口
+            elseif($msgType=='voice'){
+                    //回复类型，如果为text，代表文本类型
+                    $msgType = "text";
+                    //回复内容
+                    $contentStr = "您发送的语音消息";
+                    //格式化字符串
+                    $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+                    //把xml数据返回给手机端
+                    echo $resultStr;
+            }
+            //视频消息接口
+            elseif($msgType=='voice'){
+                    //回复类型，如果为text，代表文本类型
+                    $msgType = "text";
+                    //回复内容
+                    $contentStr = "您发送的视频消息";
+                    //格式化字符串
+                    $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+                    //把xml数据返回给手机端
+                    echo $resultStr;
+            }
+            //音乐消息接口
+            elseif($msgType=='voice'){
+                    //回复类型，如果为text，代表文本类型
+                    $msgType = "text";
+                    //回复内容
+                    $contentStr = "您发送的音乐消息";
+                    //格式化字符串
+                    $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+                    //把xml数据返回给手机端
+                    echo $resultStr;
+            }
+            //图文消息接口
+            elseif($msgType=='voice'){
+                    //回复类型，如果为text，代表文本类型
+                    $msgType = "text";
+                    //回复内容
+                    $contentStr = "您发送的图文消息";
+                    //格式化字符串
+                    $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+                    //把xml数据返回给手机端
+                    echo $resultStr;
             }
 
         }else {
