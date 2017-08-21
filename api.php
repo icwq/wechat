@@ -148,7 +148,7 @@ class wechatCallbackapiTest
                            $str .= "<item>
                                     <Title><![CDATA[每日分享{$i}]]></Title>
                                     <Description><![CDATA[这是一个不完整的笑话]]></Description>
-                                    <PicUrl><![CDATA[http://www.mtbar.me/wechat/1.jpg]]></PicUrl>
+                                    <PicUrl><![CDATA[http://www.mtbar.me/wechat/{$i}.jpg]]></PicUrl>
                                     <Url><![CDATA[http://www.itcast.cn]]></Url>
                                     </item>";
                         }
