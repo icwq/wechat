@@ -73,6 +73,15 @@ class wechatCallbackapiTest
                             <HQMusicUrl><![CDATA[%s]]></HQMusicUrl>
                             </Music>
                             </xml>";
+                //图文发送模版
+                $newsTpl = "<xml>
+                            <ToUserName><![CDATA[%s]]></ToUserName>
+                            <FromUserName><![CDATA[%s]]></FromUserName>
+                            <CreateTime>%s</CreateTime>
+                            <MsgType><![CDATA[%s]]></MsgType>
+                            <ArticleCount>%s</ArticleCount>
+                            %s
+                            </xml>";
             //文本消息接口
             if($msgType=='text'){
                 //判断发送关键词是否为空
@@ -127,6 +136,23 @@ class wechatCallbackapiTest
                         $resultStr = sprintf($musicTpl,$fromUsername,$toUsername,$time,$msgType,$title,$desc,$url,$hqurl);
                         //返回XML数据
                         echo $resultStr;
+                    }
+                    elseif($keyword=='图文'){
+                        //设置回复类型
+                        $msgType = 'news';
+                        //设置返回图文数量
+                        $count = 4;
+                        //设置要回复的图文数据
+                        $str = '<Articles>';
+                        for ($i=1; $i < $count; $i++) {
+                           $str .= "<item>
+                                    <Title><![CDATA[每日分享{$i}]]></Title>
+                                    <Description><![CDATA[这是一个不完整的笑话]]></Description>
+                                    <PicUrl><![CDATA[http://www.mtbar.me/wechat/{$i}}.jpg]]></PicUrl>
+                                    <Url><![CDATA[http://www.itcast.cn]]></Url>
+                                    </item>";
+                        }
+                        $str = .'</Articles>';
                     }
                 }else{
                 	echo "Input something...";
