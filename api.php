@@ -152,7 +152,7 @@ class wechatCallbackapiTest
                                     <Url><![CDATA[http://www.itcast.cn]]></Url>
                                     </item>";
                         }
-                        $str = .'</Articles>';
+                        $str .= '</Articles>';
                         //格式化字符串
                         $resultStr = sprintf($newsTpl,$fromUsername,$toUsername,$time,$msgType,$count,$str);
                         echo $resultStr;
