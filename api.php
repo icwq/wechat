@@ -83,8 +83,7 @@ class wechatCallbackapiTest
             //图片消息接口
             elseif($msgType=='image'){
                 //判断发送关键词是否为空
-                if(!empty( $keyword ))
-                {
+
                     //回复类型，如果为text，代表文本类型
                     $msgType = "text";
                     //回复内容
@@ -93,9 +92,7 @@ class wechatCallbackapiTest
                     $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                     //把xml数据返回给手机端
                     echo $resultStr;
-                }else{
-                    echo "Input something...";
-                }
+
             }
 
         }else {
