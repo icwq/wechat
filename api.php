@@ -68,14 +68,19 @@ class wechatCallbackapiTest
                 //判断发送关键词是否为空
 				if(!empty( $keyword ))
                 {
-                    //回复类型，如果为text，代表文本类型
-              		$msgType = "text";
-                    //回复内容
-                	$contentStr = "您发送的文本消息";
-                    //格式化字符串
-                	$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
-                    //把xml数据返回给手机端
-                	echo $resultStr;
+                    if($keyword=='文本'){
+                        //回复类型，如果为text，代表文本类型
+                        $msgType = "text";
+                        //回复内容
+                        $contentStr = "您发送的文本消息";
+                        //格式化XML模版
+                        $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+                        //把xml数据返回给手机端
+                        echo $resultStr;
+                    }
+                    else{
+                        echo "123";
+                    }
                 }else{
                 	echo "Input something...";
                 }
