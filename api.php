@@ -146,7 +146,7 @@ class wechatCallbackapiTest
                         $str = '<Articles>';
                         for ($i=1; $i<=$count;$i++){
                            $str .= "<item>
-                                    <Title><![CDATA[每日分享]]></Title>
+                                    <Title><![CDATA[每日分享{$i}]]></Title>
                                     <Description><![CDATA[这是一个不完整的笑话]]></Description>
                                     <PicUrl><![CDATA[http://www.mtbar.me/wechat/1.jpg]]></PicUrl>
                                     <Url><![CDATA[http://www.itcast.cn]]></Url>
