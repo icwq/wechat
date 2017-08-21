@@ -120,12 +120,11 @@ class wechatCallbackapiTest
                         //定义音乐描述
                         $desc = '你会经常上翘的嘴角\n出现在我每一个美好...';
                         //定义音乐链接
-                        $url = 'http://music.163.com/#/m/song?id=33166529&userid=324269021';
+                        $url = 'http://bd.kuwo.cn/yinyue/3327666?from=baidu';
                         //定义高清音乐链接
-                        $hqurl = 'http://music.163.com/#/m/song?id=33166529&userid=324269021';
+                        $hqurl = 'http://bd.kuwo.cn/yinyue/3327666?from=baidu';
                         //格式化字符串
                         $resultStr = sprintf($musicTpl,$fromUsername,$toUsername,$time,$msgType,$title,$desc,$url,$hqurl);
-
                         //返回XML数据
                         echo $resultStr;
                     }
