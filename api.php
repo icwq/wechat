@@ -7,7 +7,10 @@
 //定义TOKEN密钥
 define("TOKEN", "weixin");
 $wechatObj = new wechatCallbackapiTest();
-$wechatObj->valid();
+//验证成功后注释掉valid方法
+//$wechatObj->valid();
+//开启自动回复功能
+$wechatObj->responseMsg();
 
 class wechatCallbackapiTest
 {
@@ -18,6 +21,7 @@ class wechatCallbackapiTest
         //valid signature , option
         if($this->checkSignature()){
         	echo $echoStr;
+            echo ''
         	exit;
         }
     }
