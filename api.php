@@ -118,7 +118,7 @@ class wechatCallbackapiTest
                         //定义音乐标题
                         $title = '小猫';
                         //定义音乐描述
-                        $desc = '你会经常上翘的嘴角\n出现在我每一个美好...';
+                        $desc = "你会经常上翘的嘴角\n出现在我每一个美好...";
                         //定义音乐链接
                         $url = 'http://bd.kuwo.cn/yinyue/3327666?from=baidu';
                         //定义高清音乐链接
