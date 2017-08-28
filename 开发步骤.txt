@@ -1,0 +1,175 @@
+6大消息接收接口
+
+
+1.接收时，接收MsgType节点
+2.对$msgtype进行相关判断
+
+
++--------------------+
+|  微信文本回复接口  |
++--------------------+
+//文本消息接口
+if($msgType=='text'){
+    //判断发送关键词是否为空
+    if(!empty( $keyword ))
+    {
+        //判断关键字
+        if($keyword=='文本'){
+            //回复类型，如果为text，代表文本类型
+            $msgType = "text";
+            //回复内容
+            $contentStr = "您发送的文本消息";
+            //格式化XML模版
+            $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+            //把xml数据返回给手机端
+            echo $resultStr;
+        }
+        else{
+
+        }
+    }else{
+        echo "Input something...";
+    }
+}
+
+1.文本回复接口XML模版
+2.文本回复步骤
+    ①组装XML语句
+    ②设置相关参数
+    ③格式化字符串（重要）
+    string sprintf  ( string $format  [, mixed  $args  [, mixed  $...  ]] )
+    功能：返回格式化后的字符串
+    参数说明
+    $format:要格式化的模版信息
+    $args：要格式化的变量
+    %s:把变量格式化为字符串
+    ④返回格式化后的XML数据到微信客户端
+    ⑤微信公众平台判断用户发送过来的关键词
+        判断$keyword
+
+
+
+
++--------------------+
+|  简易号码簿        |
++--------------------+
+1.项目需求
+    当用户在平台输入？，会弹出如下信息：
+    【1】特种服务号码
+    【2】通讯服务号码
+    【3】银行服务号码
+    可以通过【】编号获取内容
+    回复1
+    常用特种服务号码
+    匪警 110
+    火警 119
+    ...
+    ...
+
++--------------------+
+|  微信音乐回复接口  |
++--------------------+
+1.音乐回复接口中的XML模版
+    <xml>
+    <ToUserName><![CDATA[toUser]]></ToUserName>
+    <FromUserName><![CDATA[fromUser]]></FromUserName>
+    <CreateTime>12345678</CreateTime>
+    <MsgType><![CDATA[music]]></MsgType>
+    <Music>
+    <Title><![CDATA[TITLE]]></Title>
+    <Description><![CDATA[DESCRIPTION]]></Description>
+    <MusicUrl><![CDATA[MUSIC_Url]]></MusicUrl>
+    <HQMusicUrl><![CDATA[HQ_MUSIC_Url]]></HQMusicUrl>
+    <ThumbMediaId><![CDATA[media_id]]></ThumbMediaId>
+    </Music>
+    </xml>
+
+
+    ToUserName      是   接收方帐号（收到的OpenID）
+    FromUserName    是   开发者微信号
+    CreateTime      是   消息创建时间 （整型）
+    MsgType         是   music
+    Title           否   音乐标题
+    Description     否   音乐描述
+    MusicURL        否   音乐链接
+    HQMusicUrl      否   高质量音乐链接，WIFI环境优先使用该链接播放音乐
+    ThumbMediaId    是   缩略图的媒体id，通过素材管理中的接口上传多媒体文件，得到的id
+2.音乐回复接口开发步骤
+    ①组装XML模版
+    ②设定回复关键词
+
++--------------------+
+|  微信图文回复接口  |
++--------------------+
+1.微信图文接口XML模版
+    <xml>
+    <ToUserName><![CDATA[toUser]]></ToUserName>
+    <FromUserName><![CDATA[fromUser]]></FromUserName>
+    <CreateTime>12345678</CreateTime>
+    <MsgType><![CDATA[news]]></MsgType>
+    <ArticleCount>2</ArticleCount>
+    <Articles>
+    <item>
+    <Title><![CDATA[title1]]></Title>
+    <Description><![CDATA[description1]]></Description>
+    <PicUrl><![CDATA[picurl]]></PicUrl>
+    <Url><![CDATA[url]]></Url>
+    </item>
+    <item>
+    <Title><![CDATA[title]]></Title>
+    <Description><![CDATA[description]]></Description>
+    <PicUrl><![CDATA[picurl]]></PicUrl>
+    <Url><![CDATA[url]]></Url>
+    </item>
+    </Articles>
+    </xml>
+
+    ToUserName      是   接收方帐号（收到的OpenID）
+    FromUserName    是   开发者微信号
+    CreateTime      是   消息创建时间 （整型）
+    MsgType         是   news
+    ArticleCount    是   图文消息个数，限制为8条以内
+    Articles        是   多条图文消息信息，默认第一个item为大图,注意，如果图文数超过8，则将会无响应
+    Title           是   图文消息标题
+    Description     是   图文消息描述
+    PicUrl          是   图片链接，支持JPG、PNG格式，较好的效果为大图360*200，小图200*200
+    Url             是   点击图文消息跳转链接
+2.图文消息接口开发
+    ①组装XML接口
+    ②设置相关参数
+    ③格式化字符串
+
+
++--------------------+
+|  LBS开发           |
++--------------------+
+1.什么是LBS
+    Location Based Service:基于地理位置的服务
+2.接收地理位置信息
+    <xml>
+    <ToUserName><![CDATA[toUser]]></ToUserName>
+    <FromUserName><![CDATA[fromUser]]></FromUserName>
+    <CreateTime>1351776360</CreateTime>
+    <MsgType><![CDATA[location]]></MsgType>
+    <Location_X>23.134521</Location_X>
+    <Location_Y>113.358803</Location_Y>
+    <Scale>20</Scale>
+    <Label><![CDATA[位置信息]]></Label>
+    <MsgId>1234567890123456</MsgId>
+    </xml>
+
+    ToUserName  开发者微信号
+    FromUserName    发送方帐号（一个OpenID）
+    CreateTime  消息创建时间 （整型）
+    MsgType location
+    Location_X  地理位置维度
+    Location_Y  地理位置经度
+    Scale   地图缩放大小
+    Label   地理位置信息
+    MsgId   消息id，64位整型
+3.LBS开发步骤：
+    ①判断$msgType类型为"location"类型的数据
+    ②几个关键词
+        $latitude纬度
+        $longitude经度
+    ③通过文本消息返回用户地理信息

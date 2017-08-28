@@ -49,6 +49,9 @@ class wechatCallbackapiTest
                 $keyword = trim($postObj->Content);
                 //接收用户消息类型
                 $msgType = $postObj->MsgType;
+                //定义$longitude和$latitude接收经纬度信息
+                $longitude = $postObj->Location_Y;
+                $latitude = $postObj->Location_X;
                 //时间戳
                 $time = time();
                 //文本发送模版
@@ -184,7 +187,7 @@ class wechatCallbackapiTest
                     echo $resultStr;
             }
             //视频消息接口
-            elseif($msgType=='voice'){
+            elseif($msgType=='video'){
                     //回复类型，如果为text，代表文本类型
                     $msgType = "text";
                     //回复内容
@@ -194,23 +197,45 @@ class wechatCallbackapiTest
                     //把xml数据返回给手机端
                     echo $resultStr;
             }
-            //音乐消息接口
-            elseif($msgType=='voice'){
+            //小视频消息接口
+            elseif($msgType=='shortvideo'){
                     //回复类型，如果为text，代表文本类型
                     $msgType = "text";
                     //回复内容
-                    $contentStr = "您发送的音乐消息";
+                    $contentStr = "您发送的小视频消息";
                     //格式化字符串
                     $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                     //把xml数据返回给手机端
                     echo $resultStr;
             }
-            //图文消息接口
-            elseif($msgType=='voice'){
+            //地理位置消息接口
+            elseif($msgType=='location'){
                     //回复类型，如果为text，代表文本类型
                     $msgType = "text";
                     //回复内容
-                    $contentStr = "您发送的图文消息";
+                    $contentStr = "您发送的地理位置消息";
+                    //格式化字符串
+                    $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+                    //把xml数据返回给手机端
+                    echo $resultStr;
+            }
+            //链接消息接口
+            elseif($msgType=='link'){
+                    //回复类型，如果为text，代表文本类型
+                    $msgType = "text";
+                    //回复内容
+                    $contentStr = "您发送的链接消息";
+                    //格式化字符串
+                    $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+                    //把xml数据返回给手机端
+                    echo $resultStr;
+            }
+            //地理位置消息接口
+            elseif($msgType=='location'){
+                    //回复类型，如果为text，代表文本类型
+                    $msgType = "text";
+                    //回复内容
+                    $contentStr = "您发送的地理位置消息，您的位置:经度{$longitude},纬度{$latitude}";
                     //格式化字符串
                     $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                     //把xml数据返回给手机端
